@@ -10,8 +10,8 @@ const WhatIsBackyard = () => {
           <li className={styles.item}>
             <img
               className={styles.photo}
-              srcSet="./img/land-desk-1x.png 1x, ./img/land-desk-2x.png 2x"
-              src="./img/land-desk-1x.png"
+              srcSet="./img/land-desck-1x.png 1x, ./img/land-desck-2x.png 2x"
+              src="./img/land-desck-1x.png"
               alt="land"
               width="179"
               height="179"
