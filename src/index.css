@@ -46,3 +46,5 @@ button {
 *::after {
   box-sizing: border-box;
 }
+
+@import "tailwindcss";
