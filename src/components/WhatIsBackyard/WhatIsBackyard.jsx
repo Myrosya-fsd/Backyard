@@ -5,7 +5,7 @@ const data = [
   {
     id: 1,
     img: "./img/land-desk-1x.png",
-    img2x: "./img/land-desk-2x.png",
+    img2x: "./img/land-desck-2x.png",
     title: "Yield Aggregator",
     headline: "One-click yield aggregation",
     text: "Choose multiple stablecoin strategies, diversify in seconds, and optimize your yield without complexity",
