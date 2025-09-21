@@ -50,42 +50,44 @@ export default function WhatIsBackyard() {
             <li
               key={it.id}
               className={clsx(
+                // базово (mobile-first) — по центру
                 "flex flex-col items-center",
-                it.id !== 1 && "hidden xl:flex",
-                it.id === 1 &&
-                  "md:flex md:flex-row md:items-center md:justify-between w-full"
+
+                // від 768px до 1279px — по лівому краю
+                "md:items-start md:self-start",
+
+                // з 1280px включається твоя логіка
+                it.id !== 1 && "hidden xl:flex"
               )}
             >
-              <div className="order-2 md:order-1 flex flex-col items-start">
-                <div className="-mt-[36px] mb-[15px] w-[330px] h-[57px] rounded-[45px] backdrop-blur-[4px] bg-[#f4f6f7] flex items-center gap-[12px] pl-[12px] pt-[13px] pb-[13px]">
-                  <div className="w-[33px] h-[33px] bg-[#303030] rounded-full flex items-center justify-center font-semibold text-[15px] leading-[140%] tracking-[0.02em] text-[#fbfbfc]">
-                    {it.id}
-                  </div>
-                  <h3 className="text-[20px] font-normal text-[#303030]">
-                    {it.title}
-                  </h3>
-                </div>
-
-                <div className="w-[330px] rounded-[31px] px-[29px] py-[30px] backdrop-blur-[4px] bg-[#f4f6f7] text-left">
-                  <div className="mb-[11px] 2xl:mb-[11px]">
-                    <h4 className="font-extrabold text-[#2d322f] text-[18px] 2xl:text-[20px]">
-                      {it.headline}
-                    </h4>
-                  </div>
-                  <p className="font-normal text-[#787878] text-[14px] 2xl:text-[16px]">
-                    {it.text}
-                  </p>
-                </div>
-              </div>
-
               <img
-                className="block w-[179px] h-[179px] object-contain order-1 md:order-2 md:mt-[36px]"
+                className="block w-[179px] h-[179px] object-contain"
                 srcSet={`${it.img} 1x, ${it.img2x} 2x`}
                 src={it.img}
                 alt={it.title}
                 width="179"
                 height="179"
               />
+
+              <div className="-mt-[36px] mb-[15px] w-[330px] h-[57px] rounded-[45px] backdrop-blur-[4px] bg-[#f4f6f7] flex items-center gap-[12px] pl-[12px] pt-[13px] pb-[13px]">
+                <div className="w-[33px] h-[33px] bg-[#303030] rounded-full flex items-center justify-center font-semibold text-[15px] leading-[140%] tracking-[0.02em] text-[#fbfbfc]">
+                  {it.id}
+                </div>
+                <h3 className="text-[20px] font-normal text-[#303030]">
+                  {it.title}
+                </h3>
+              </div>
+
+              <div className="w-[330px] rounded-[31px] px-[29px] py-[30px] backdrop-blur-[4px] bg-[#f4f6f7] text-left">
+                <div className="mb-[11px] 2xl:mb-[11px]">
+                  <h4 className="font-extrabold text-[#2d322f] text-[18px] 2xl:text-[20px]">
+                    {it.headline}
+                  </h4>
+                </div>
+                <p className="font-normal text-[#787878] text-[14px] 2xl:text-[16px]">
+                  {it.text}
+                </p>
+              </div>
             </li>
           ))}
         </ul>

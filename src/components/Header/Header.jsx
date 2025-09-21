@@ -4,6 +4,14 @@ import MobileMenu from "../MobileMenu/MobileMenu.jsx";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState("Home");
+  const menuItems = [
+    "Home",
+    "About",
+    "How it works",
+    "Token design",
+    "YARD flywheel",
+  ];
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -26,21 +34,25 @@ const Header = () => {
             </a>
           </div>
           <ul className="hidden md:flex gap-[4px] border border-[rgba(225,225,226,0.46)] rounded-full p-[3px] h-[44px] bg-[#f2f3f5]">
-            {[
-              "Home",
-              "About",
-              "How it works",
-              "Token design",
-              "YARD flywheel",
-            ].map((item) => (
-              <li
-                key={item}
-                className="flex items-center justify-center rounded-full px-4 h-[38px] text-[11px] xl:text-[13px] font-medium text-center hover:bg-[#303030] hover:text-[#fbfbfc]"
-              >
-                {item}
-              </li>
-            ))}
+            {menuItems.map((item) => {
+              const isActive = item === activeItem;
+              return (
+                <li
+                  key={item}
+                  onClick={() => setActiveItem(item)}
+                  className={`flex items-center justify-center rounded-full px-4 h-[38px] text-[11px] xl:text-[13px] font-medium text-center cursor-pointer
+          ${
+            isActive
+              ? "bg-[#303030] font-[500] text-[#fbfbfc]"
+              : "hover:bg-[#303030] hover:text-[#fbfbfc]"
+          }`}
+                >
+                  {item}
+                </li>
+              );
+            })}
           </ul>
+
           <button
             key="Connect"
             className="hidden md:flex xl:hidden items-center justify-center rounded-full px-4 h-[38px] bg-[#2d2d2d] text-[#f7f7f7] text-[11px] font-medium text-center hover:text-[#d1d1d2] active:bg-[#2d2d2d] active:text-[#595959] "
