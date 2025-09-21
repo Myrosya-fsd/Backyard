@@ -4,7 +4,8 @@ import clsx from "clsx";
 const Hero = () => {
   return (
     <section
-      className="pt-[210px] relative z-[1] bg-cover bg-no-repeat bg-[center_-130px] mb-[131px]"
+      className="pt-[210px] relative z-[1] bg-cover bg-no-repeat bg-[center_-130px]
+          pb-[67px] md:pb-[119px] xl:pb-[148px] 2xl:pb-[131px]"
       style={{
         backgroundImage:
           "image-set(url(/img/backing-1x.png) 1x, url(/img/backing-2x.png) 2x)",
@@ -16,7 +17,7 @@ const Hero = () => {
             <h1
               className={clsx(
                 "font-semibold text-[#303030] text-left flex-1",
-                "text-[58px] leading-[110%] w-[316px] h-[448px]",
+                "text-[58px] leading-[110%] w-[316px] ",
                 "md:text-[72px]",
                 "2xl:text-[90px]"
               )}

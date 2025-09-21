@@ -1,6 +1,14 @@
 import Container from "../Container/Container.jsx";
+import { useState } from "react";
+import MobileMenu from "../MobileMenu/MobileMenu.jsx";
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
   return (
     <section className="absolute top-0 left-0 w-full z-10 py-8">
       <Container>
@@ -39,7 +47,10 @@ const Header = () => {
           >
             Connect
           </button>
-          <button className="md:hidden border border-gray-300 hover:border-[#303030] rounded-[11px]">
+          <button
+            className="md:hidden border border-gray-300 hover:border-[#303030] rounded-[11px]"
+            onClick={toggleMenu}
+          >
             <img
               srcSet="./img/menu.svg"
               src="./img/menu.svg"
@@ -48,6 +59,7 @@ const Header = () => {
               height="40"
             />
           </button>
+          {isMenuOpen && <MobileMenu closeMenu={() => setIsMenuOpen(false)} />}
         </nav>
       </Container>
     </section>

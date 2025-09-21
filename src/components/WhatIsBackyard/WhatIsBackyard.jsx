@@ -30,7 +30,7 @@ const data = [
 
 export default function WhatIsBackyard() {
   return (
-    <section className="mb-[131px]">
+    <section className="pb-[67px] md:pb-[119px] xl:pb-[148px] 2xl:pb-[131px]">
       <Container>
         <div
           className={clsx("mb-[39px] md:mb-[36px] xl:mb-[77px] 2xl:mb-[77px]")}
