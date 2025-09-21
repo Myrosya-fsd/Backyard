@@ -39,7 +39,7 @@ const Header = () => {
           >
             Connect
           </button>
-          <button className="md:hidden end">
+          <button className="md:hidden border border-gray-300 hover:border-[#303030] rounded-[11px]">
             <img
               srcSet="./img/menu.svg"
               src="./img/menu.svg"

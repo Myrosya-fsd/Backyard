@@ -11,38 +11,49 @@ const Hero = () => {
       }}
     >
       <Container>
-        <div
-          className={clsx(
-            "flex mb-[14px]",
-            "sm:mb-[16px]",
-            "md:mb-[16px]",
-            "2xl:mb-[16px]"
-          )}
-        >
-          <h1
+        <div className="relative mb-[14px] sm:mb-[16px] md:mb-[16px] 2xl:mb-[16px]">
+          <div className="flex items-start">
+            <h1
+              className={clsx(
+                "font-semibold text-[#303030] text-left flex-1",
+                "text-[58px] leading-[110%] w-[316px] h-[448px]",
+                "md:text-[72px]",
+                "2xl:text-[90px]"
+              )}
+              style={{ fontFamily: "var(--font-family)" }}
+            >
+              The yield-backed stablecoin protocol boosting DeFi liquidity
+            </h1>
+
+            <picture className="hidden md:block ml-auto shrink-0">
+              <source
+                srcSet="/img/hero-big-1x.png 1x, /img/hero-big-2x.png 2x"
+                media="(min-width:1440px)"
+              />
+              <source
+                srcSet="/img/hero-desk-1x.png 1x, /img/hero-desk-2x.png 2x"
+                media="(min-width:1280px)"
+              />
+              <source
+                srcSet="/img/hero-tab-1x.png 1x, /img/hero-tab-2x.png 2x"
+                media="(min-width:768px)"
+              />
+              <img
+                src="/img/hero-desk-1x.png"
+                srcSet="/img/hero-desk-1x.png 1x, /img/hero-desk-2x.png 2x"
+                alt="plant"
+                className="w-[212px] h-[212px] 2xl:w-[276px] 2xl:h-[276px] object-contain"
+              />
+            </picture>
+          </div>
+          <picture
             className={clsx(
-              "font-semibold text-[58px] leading-[110%] text-[#303030] max-w-[1027px] text-left",
-              "sm:text-[48px] ",
-              "md:text-[72px] ",
-              "2xl:text-[90px]"
+              "absolute z-[20] pointer-events-none",
+              "max-[767px]:top-[330px] max-[767px]:left-[147px]",
+              "max-[767px]:w-[60px] max-[767px]:h-[60px]",
+              "md:hidden"
             )}
-            style={{ fontFamily: "var(--font-family)" }}
           >
-            The yield-backed stablecoin protocol boosting DeFi liquidity
-          </h1>
-          <picture>
-            <source
-              srcSet="/img/hero-big-1x.png 1x, /img/hero-big-2x.png 2x"
-              media="(min-width:1440px)"
-            />
-            <source
-              srcSet="/img/hero-desk-1x.png 1x, /img/hero-desk-2x.png 2x"
-              media="(min-width:1280px)"
-            />
-            <source
-              srcSet="/img/hero-tab-1x.png 1x, /img/hero-tab-2x.png 2x"
-              media="(min-width:768px)"
-            />
             <source
               srcSet="/img/hero-mob-1x.png 1x, /img/hero-mob-2x.png 2x"
               media="(max-width:767px)"
@@ -51,16 +62,17 @@ const Hero = () => {
               src="/img/hero-mob-1x.png"
               srcSet="/img/hero-mob-1x.png 1x, /img/hero-mob-2x.png 2x"
               alt="plant"
-              className="ml-auto"
+              className="object-contain w-full h-full"
             />
           </picture>
         </div>
+
         <div
           className={clsx(
-            " mb-[38px]",
+            "mb-[38px]",
             "sm:mb-[33px]",
             "md:mb-[70px]",
-            " 2xl:mb-[82.5px]"
+            "2xl:mb-[82.5px]"
           )}
         >
           <p
@@ -75,14 +87,16 @@ const Hero = () => {
             Keep your yield working for you — we keep your liquidity accessible
           </p>
         </div>
+
         <div className="flex gap-[21px]">
-          <button className="rounded-[38px]  py-[16px] w-[164px] h-[57px] bg-[#2d2d2d] text-[#f7f7f7] font-semibold text-[16px] hover:bg-[#3b3b3b] hover:text-[#d1d1d2] active:bg-[#2d2d2d] active:text-[#595959] md:w-[329px]">
+          <button className="rounded-[38px] py-[16px] w-[164px] h-[57px] bg-[#2d2d2d] text-[#f7f7f7] font-semibold text-[16px] hover:bg-[#3b3b3b] hover:text-[#d1d1d2] active:bg-[#2d2d2d] active:text-[#595959] md:w-[329px]">
             Join Whitelist
           </button>
 
           <button className="hidden md:block rounded-[38px] px-[32px] py-[16px] w-[208px] h-[57px] bg-[#e6e8ec] text-[#2e2e2e] font-semibold text-[16px] hover:bg-[#f8fbff] hover:text-[#2e2e2e]/75 active:bg-[#abacaf] active:text-[#2e2e2e]">
             Read Docs
           </button>
+
           <button className="flex items-center justify-center gap-2 rounded-[38px] py-[16px] w-[144px] h-[57px] bg-[#e6e8ec] text-[#2e2e2e] font-semibold text-[16px] hover:bg-[#f8fbff] hover:text-[#2e2e2e]/75 active:bg-[#abacaf] active:text-[#2e2e2e] block md:hidden">
             Learn more
             <img src="./img/arrow.svg" alt="arrow" width="12" height="12" />

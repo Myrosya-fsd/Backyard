@@ -5,7 +5,7 @@ const data = [
   {
     id: 1,
     img: "./img/land-desk-1x.png",
-    img2x: "./img/land-desck-2x.png",
+    img2x: "./img/land-desk-2x.png",
     title: "Yield Aggregator",
     headline: "One-click yield aggregation",
     text: "Choose multiple stablecoin strategies, diversify in seconds, and optimize your yield without complexity",
@@ -33,70 +33,68 @@ export default function WhatIsBackyard() {
     <section className="mb-[131px]">
       <Container>
         <div
-          className={clsx(
-            "mb-[39px]",
-            " md:mb-[36px]",
-            "xl:mb-[77px]",
-            "2xl:mb-[77px]"
-          )}
+          className={clsx("mb-[39px] md:mb-[36px] xl:mb-[77px] 2xl:mb-[77px]")}
         >
           <h2
             className={clsx(
               "font-[var(--font-family)] font-bold leading-[110%] text-[#303030]",
-              "text-[28px]",
-              "md:text-[42px]",
-              "xl:text-[42px] ",
-              "2xl:text-[48px] "
+              "text-[28px] md:text-[42px] xl:text-[42px] 2xl:text-[48px]"
             )}
           >
             What is Backyard?
           </h2>
         </div>
-        <ul className="w-full flex flex-col md:flex-row md:justify-between md:gap-[78px] gap-8">
+
+        <ul className="w-full flex flex-col xl:flex-row xl:justify-between gap-8">
           {data.map((it) => (
-            <li key={it.id} className="flex flex-col items-center">
+            <li
+              key={it.id}
+              className={clsx(
+                "flex flex-col items-center",
+                it.id !== 1 && "hidden xl:flex",
+                it.id === 1 &&
+                  "md:flex md:flex-row md:items-center md:justify-between w-full"
+              )}
+            >
+              <div className="order-2 md:order-1 flex flex-col items-start">
+                <div className="-mt-[36px] mb-[15px] w-[330px] h-[57px] rounded-[45px] backdrop-blur-[4px] bg-[#f4f6f7] flex items-center gap-[12px] pl-[12px] pt-[13px] pb-[13px]">
+                  <div className="w-[33px] h-[33px] bg-[#303030] rounded-full flex items-center justify-center font-semibold text-[15px] leading-[140%] tracking-[0.02em] text-[#fbfbfc]">
+                    {it.id}
+                  </div>
+                  <h3 className="text-[20px] font-normal text-[#303030]">
+                    {it.title}
+                  </h3>
+                </div>
+
+                <div className="w-[330px] rounded-[31px] px-[29px] py-[30px] backdrop-blur-[4px] bg-[#f4f6f7] text-left">
+                  <div className="mb-[11px] 2xl:mb-[11px]">
+                    <h4 className="font-extrabold text-[#2d322f] text-[18px] 2xl:text-[20px]">
+                      {it.headline}
+                    </h4>
+                  </div>
+                  <p className="font-normal text-[#787878] text-[14px] 2xl:text-[16px]">
+                    {it.text}
+                  </p>
+                </div>
+              </div>
+
               <img
-                className="block w-[179px] h-[179px] object-contain"
+                className="block w-[179px] h-[179px] object-contain order-1 md:order-2 md:mt-[36px]"
                 srcSet={`${it.img} 1x, ${it.img2x} 2x`}
                 src={it.img}
                 alt={it.title}
                 width="179"
                 height="179"
               />
-              <div className="-mt-[36px] mb-[15px] w-[330px] h-[57px] rounded-[45px] backdrop-blur-[4px] bg-[#f4f6f7] flex items-center gap-[12px] pl-[12px] pt-[13px] pb-[13px]">
-                <div className="w-[33px] h-[33px] bg-[#303030] rounded-full flex items-center justify-center font-semibold text-[15px] leading-[140%] tracking-[0.02em] text-[#fbfbfc]">
-                  {it.id}
-                </div>
-                <h3 className="text-[20px] font-normal text-[#303030]">
-                  {it.title}
-                </h3>
-              </div>
-
-              <div className="w-[330px] rounded-[31px] px-[29px] py-[30px] backdrop-blur-[4px] bg-[#f4f6f7] text-left">
-                <div className={clsx("mb-[11px]", "  2xl:mb-[11px]")}>
-                  <h4
-                    className={clsx(
-                      "font-extrabold text-[#2d322f]",
-                      "text-[18px] ",
-                      "2xl:text-[20px]"
-                    )}
-                  >
-                    {it.headline}
-                  </h4>
-                </div>
-                <p
-                  className={clsx(
-                    "font-normal text-[#787878]",
-                    "text-[14px]",
-                    "2xl:text-[16px]"
-                  )}
-                >
-                  {it.text}
-                </p>
-              </div>
             </li>
           ))}
         </ul>
+
+        <div className="mt-[27px] flex justify-left gap-2 xl:hidden">
+          <span className="w-7 h-1 rounded-full bg-[#303030] cursor-pointer" />
+          <span className="w-7 h-1 rounded-full bg-[#d9d9d9] cursor-pointer" />
+          <span className="w-7 h-1 rounded-full bg-[#d9d9d9] cursor-pointer" />
+        </div>
       </Container>
     </section>
   );
