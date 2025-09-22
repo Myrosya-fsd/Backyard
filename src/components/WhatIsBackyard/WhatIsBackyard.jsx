@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Container from "../Container/Container.jsx";
 import clsx from "clsx";
 
@@ -29,12 +30,12 @@ const data = [
 ];
 
 export default function WhatIsBackyard() {
+  const [active, setActive] = useState(0);
+
   return (
     <section className="pb-[67px] md:pb-[119px] xl:pb-[148px] 2xl:pb-[131px]">
       <Container>
-        <div
-          className={clsx("mb-[39px] md:mb-[36px] xl:mb-[77px] 2xl:mb-[77px]")}
-        >
+        <div className="mb-[39px] md:mb-[36px] xl:mb-[77px] 2xl:mb-[77px]">
           <h2
             className={clsx(
               "font-[var(--font-family)] font-bold leading-[110%] text-[#303030]",
@@ -46,22 +47,30 @@ export default function WhatIsBackyard() {
         </div>
 
         <ul className="w-full flex flex-col xl:flex-row xl:justify-between gap-8">
-          {data.map((it) => (
+          {data.map((it, idx) => (
             <li
               key={it.id}
               className={clsx(
-                // базово (mobile-first) — по центру
                 "flex flex-col items-center",
 
-                // від 768px до 1279px — по лівому краю
-                "md:items-start md:self-start",
+                idx === active &&
+                  "md:flex-row md:items-start md:justify-between",
 
-                // з 1280px включається твоя логіка
-                it.id !== 1 && "hidden xl:flex"
+                "xl:flex-col xl:items-center",
+
+                idx !== active && "hidden md:hidden",
+
+                "xl:flex"
               )}
             >
               <img
-                className="block w-[179px] h-[179px] object-contain"
+                className={clsx(
+                  "block w-[179px] h-[179px] object-contain",
+
+                  idx === active && "md:order-2 md:ml-6",
+
+                  "xl:order-none xl:ml-0"
+                )}
                 srcSet={`${it.img} 1x, ${it.img2x} 2x`}
                 src={it.img}
                 alt={it.title}
@@ -69,33 +78,49 @@ export default function WhatIsBackyard() {
                 height="179"
               />
 
-              <div className="-mt-[36px] mb-[15px] w-[330px] h-[57px] rounded-[45px] backdrop-blur-[4px] bg-[#f4f6f7] flex items-center gap-[12px] pl-[12px] pt-[13px] pb-[13px]">
-                <div className="w-[33px] h-[33px] bg-[#303030] rounded-full flex items-center justify-center font-semibold text-[15px] leading-[140%] tracking-[0.02em] text-[#fbfbfc]">
-                  {it.id}
-                </div>
-                <h3 className="text-[20px] font-normal text-[#303030]">
-                  {it.title}
-                </h3>
-              </div>
+              <div
+                className={clsx(
+                  "flex flex-col items-center",
 
-              <div className="w-[330px] rounded-[31px] px-[29px] py-[30px] backdrop-blur-[4px] bg-[#f4f6f7] text-left">
-                <div className="mb-[11px] 2xl:mb-[11px]">
-                  <h4 className="font-extrabold text-[#2d322f] text-[18px] 2xl:text-[20px]">
-                    {it.headline}
-                  </h4>
+                  idx === active && "md:items-start",
+
+                  "xl:items-center"
+                )}
+              >
+                <div className="-mt-[36px] mb-[15px] w-[330px] h-[57px] rounded-[45px] backdrop-blur-[4px] bg-[#f4f6f7] flex items-center gap-[12px] pl-[12px] pt-[13px] pb-[13px]">
+                  <div className="w-[33px] h-[33px] bg-[#303030] rounded-full flex items-center justify-center font-semibold text-[15px] leading-[140%] tracking-[0.02em] text-[#fbfbfc]">
+                    {it.id}
+                  </div>
+                  <h3 className="text-[20px] font-normal text-[#303030]">
+                    {it.title}
+                  </h3>
                 </div>
-                <p className="font-normal text-[#787878] text-[14px] 2xl:text-[16px]">
-                  {it.text}
-                </p>
+                <div className="w-[330px] rounded-[31px] px-[29px] py-[30px] backdrop-blur-[4px] bg-[#f4f6f7] text-left">
+                  <div className="mb-[11px] 2xl:mb-[11px]">
+                    <h4 className="font-extrabold text-[#2d322f] text-[18px] 2xl:text-[20px]">
+                      {it.headline}
+                    </h4>
+                  </div>
+                  <p className="font-normal text-[#787878] text-[14px] 2xl:text-[16px]">
+                    {it.text}
+                  </p>
+                </div>
               </div>
             </li>
           ))}
         </ul>
 
-        <div className="mt-[27px] flex justify-left gap-2 xl:hidden">
-          <span className="w-7 h-1 rounded-full bg-[#303030] cursor-pointer" />
-          <span className="w-7 h-1 rounded-full bg-[#d9d9d9] cursor-pointer" />
-          <span className="w-7 h-1 rounded-full bg-[#d9d9d9] cursor-pointer" />
+        <div className="mt-[27px] flex gap-2 xl:hidden">
+          {[0, 1, 2].map((i) => (
+            <span
+              key={i}
+              onClick={() => setActive(i)}
+              className={clsx(
+                "w-7 h-1 rounded-full cursor-pointer transition-colors",
+                active === i ? "bg-[#303030]" : "bg-[#d9d9d9]"
+              )}
+            />
+          ))}
         </div>
       </Container>
     </section>
