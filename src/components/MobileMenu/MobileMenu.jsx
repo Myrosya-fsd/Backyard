@@ -1,4 +1,15 @@
+import { useState } from "react";
+
 const MobileMenu = ({ closeMenu }) => {
+  const [activeItem, setActiveItem] = useState("Home");
+  const menuItems = [
+    "Home",
+    "About",
+    "How it works",
+    "Token design",
+    "YARD flywheel",
+  ];
+
   return (
     <div className="absolute top-0 left-0 w-full h-screen p-4 z-50  bg-[#201f20] md:bg-transparent">
       <div className="flex justify-between items-center md:hidden w-[320px] mx-auto">
@@ -47,38 +58,33 @@ const MobileMenu = ({ closeMenu }) => {
             background: "#e8e9ed",
           }}
         >
-          {[
-            "Home",
-            "About",
-            "How it works",
-            "Token design",
-            "YARD flywheel",
-          ].map((item, index) => (
+          {menuItems.map((item) => (
             <li
               key={item}
-              className="flex items-center justify-start rounded-full px-4 h-[38px] text-[13px] font-medium text-left hover:bg-[#303030] hover:text-[#fbfbfc]"
-              style={{ color: index === 0 ? "#303030" : "#7a7a7a" }}
+              onClick={() => setActiveItem(item)}
+              className={`flex items-center justify-start rounded-full px-4 h-[38px] text-[13px] font-medium text-left cursor-pointer hover:text-[#fbfbfc]`}
+              style={{
+                color: activeItem === item ? "#303030" : "#7a7a7a",
+              }}
             >
               {item}
             </li>
           ))}
           <li
             key="Connect"
+            className="
+    cursor-pointer 
+    flex items-center justify-center 
+    rounded-full 
+    border border-[#ebebed] 
+    w-[148px] h-[40px] 
+    bg-[#303030] text-[#e8e9ed] 
+    font-medium text-[13px] 
+    hover:bg-[#3b3b3b] hover:text-[#d1d1d2] 
+    active:bg-[#2d2d2d] active:text-[#595959]
+  "
             style={{
-              background: "#303030",
-              border: "1px solid #ebebed",
-              borderRadius: "100px",
-              padding: "3px",
-              width: "148px",
-              height: "40px",
               fontFamily: "var(--second-family)",
-              fontWeight: 500,
-              fontSize: "13px",
-              textAlign: "center",
-              color: "#e8e9ed",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
             }}
           >
             Connect
